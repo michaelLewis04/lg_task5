@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" 
+     xmlns:gx="http://www.google.com/kml/ext/2.2">
+  <Document>
+    <name>3D Building Model</name>
+    <description>A KML to display building.dae at the specified coordinates.</description>
+    <Placemark>
+      <name>3D Building</name>
+      <Model>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <Location>
+          <longitude>-122.1424758</longitude> <!-- Specified Longitude -->
+          <latitude>37.4428386</latitude>    <!-- Specified Latitude -->
+          <altitude>0</altitude>           <!-- Altitude in meters -->
+        </Location>
+        <Orientation>
+          <heading>0</heading>              <!-- Heading angle -->
+          <tilt>0</tilt>                    <!-- Tilt angle -->
+          <roll>0</roll>                    <!-- Roll angle -->
+        </Orientation>
+        <Scale>
+          <x>1</x>
+          <y>1</y>
+          <z>1</z>
+        </Scale>
+        <Link>
+          <href>building.dae</href>         <!-- Path to your DAE file -->
+        </Link>
+      </Model>
+      <LookAt>
+        <longitude>-122.1424758</longitude>
+        <latitude>37.4428386</latitude>
+        <altitude>0</altitude>
+        <range>50</range>                  <!-- Distance from the model -->
+        <tilt>45</tilt>                    <!-- Camera tilt -->
+        <heading>90</heading>               <!-- Camera heading -->
+        <altitudeMode>relativeToGround</altitudeMode>
+      </LookAt>
+    </Placemark>
+  </Document>
+</kml>
