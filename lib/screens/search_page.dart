@@ -79,26 +79,39 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
             Expanded(
               child: Align(
                 alignment: FractionalOffset.bottomCenter,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(4, (index) {
-                    final colors = [
-                      Colors.blue,
-                      Colors.red,
-                      Colors.yellow,
-                      Colors.green
-                    ];
-                    return AnimatedBuilder(
-                      animation: _animationController,
-                      builder: (context, child) {
-                        return Container(
-                          height: 10,
-                          width: _rectangleWidths[index],
-                          color: colors[index],
-                        );
-                      },
-                    );
-                  }),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: List.generate(4, (index) {
+                      final colors = [
+                        const Color(0xFF4285F4), 
+                        const Color(0xFFDB4437), 
+                        const Color(0xFFF4B400), 
+                        const Color(0xFF0F9D58), 
+                      ];
+                      return AnimatedBuilder(
+                        animation: _animationController,
+                        builder: (context, child) {
+                          return Container(
+                            height: 10,
+                            width: _rectangleWidths[index],
+                            decoration: BoxDecoration(
+                              color: colors[index],
+                              borderRadius: BorderRadius.circular(2),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: colors[index].withOpacity(0.7),
+                                  blurRadius: 20,
+                                  spreadRadius: 10,
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    }),
+                  ),
                 ),
               ),
             ),
@@ -110,12 +123,10 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
   void _updateWidths() {
     final random = Random();
 
-    final screenWidth = MediaQuery.of(context).size.width;
+    final screenWidth =
+        MediaQuery.of(context).size.width - 32; 
 
-    final weights = List.generate(
-        4,
-        (_) =>
-            random.nextDouble() * 10); 
+    final weights = List.generate(4, (_) => random.nextDouble() * 10);
     final totalWeight = weights.reduce((a, b) => a + b);
 
     setState(() {
@@ -133,7 +144,7 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
       );
       if (available) {
         setState(() => _isListening = true);
-        _animationController.repeat(); 
+        _animationController.repeat();
         _speech!.listen(
           onResult: (val) => setState(() {
             _text = val.recognizedWords;
@@ -142,7 +153,7 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
       }
     } else {
       setState(() => _isListening = false);
-      _animationController.stop(); 
+      _animationController.stop();
       _speech!.stop();
     }
   }

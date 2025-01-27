@@ -84,33 +84,32 @@ class _NavigationPageState extends State<NavigationPage>
                       onTap: () {
                         _onTabChange(index);
                       },
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 300),
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        decoration: BoxDecoration(
-                          color: selectedNavIndex == index
-                              ? Color.fromARGB(
-                                  255, 57, 171, 233)
-                              : Colors.transparent,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              bottomNavLabels[index],
-                              style: TextStyle(
-                                color: selectedNavIndex == index
-                                    ? Colors.white
-                                    : Colors.white.withOpacity(0.5),
-                                fontWeight: selectedNavIndex == index
-                                    ? FontWeight.bold
-                                    : FontWeight.normal,
-                                fontSize: 16,
-                              ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            bottomNavLabels[index],
+                            style: TextStyle(
+                              color: selectedNavIndex == index
+                                  ? const Color.fromARGB(255, 42, 242, 242)
+                                  : Colors.white.withOpacity(0.5),
+                              fontWeight: FontWeight.normal,
+                              fontSize: 16,
                             ),
-                          ],
-                        ),
+                          ),
+                          const SizedBox(height: 6),
+                          AnimatedContainer(
+                            duration: const Duration(milliseconds: 300),
+                            height: 3,
+                            width: selectedNavIndex == index ? 40 : 0,
+                            decoration: BoxDecoration(
+                              color: selectedNavIndex == index
+                                  ? const Color.fromARGB(255, 42, 242, 242)
+                                  : Colors.transparent,
+                              borderRadius: BorderRadius.circular(1.5),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   );
