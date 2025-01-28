@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lg_task5/screens/gemini.dart';
-import 'package:lg_task5/screens/home_page.dart';
+import 'package:lg_task5/screens/animated_tab.dart';
 import 'package:lg_task5/screens/progress_bar.dart';
 import 'package:lg_task5/screens/search_page.dart';
 import 'package:lg_task5/screens/settings_page.dart';
@@ -21,7 +21,7 @@ class _NavigationPageState extends State<NavigationPage>
     GeminiLogo(),
     ProgressBar(),
     SettingsPage(),
-    HomePage(),
+    AnimatedTabBar(),
   ];
 
   final List<String> bottomNavLabels = [
